@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Créateur de formulaire dynamique</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="./assets/js/justAppend.js" defer></script>
+</head>
+<body>
+    <div class="app-shell">
+        <header class="app-header">
+            <div>
+                <p class="eyebrow">Créateur de formulaire dynamique</p>
+                <h1>Générez votre formulaire</h1>
+                <p>Ajoutez des champs, visualisez-les et enregistrez votre formulaire.</p>
+            </div>
+            <div id="fieldCount">No fields yet</div>
+        </header>
+
+        <div class="workspace">
+            <section class="builder-panel">
+                <form id="fieldBuilder" class="field-builder">
+                    <label>
+                        <span>Type de champ</span>
+                        <select id="fieldType">
+                            <option value="text">Texte</option>
+                            <option value="textarea">Zone de texte</option>
+                            <option value="select">Sélection</option>
+                            <option value="radio">Radio</option>
+                            <option value="checkbox">Case à cocher</option>
+                        </select>
+                    </label>
+
+                    <label>
+                        <span>Étiquette</span>
+                        <input id="fieldLabel" type="text" placeholder="Nom du champ" required>
+                    </label>
+
+                    <label>
+                        <span>Nom interne</span>
+                        <input id="fieldName" type="text" placeholder="nom_du_champ" required>
+                    </label>
+
+                    <div id="placeholderGroup">
+                        <label>
+                            <span>Placeholder</span>
+                            <input id="fieldPlaceholder" type="text" placeholder="Texte affiché">
+                        </label>
+                    </div>
+
+                    <label class="check-row">
+                        <input id="fieldRequired" type="checkbox">
+                        Requis
+                    </label>
+
+                    <div id="optionsBlock" class="options-block" hidden>
+                        <div class="option-title">
+                            <h2>Options</h2>
+                            <button id="addOption" type="button" class="small-button">Ajouter une option</button>
+                        </div>
+                        <div id="optionsList"></div>
+                    </div>
+
+                    <div class="builder-actions">
+                        <button type="submit" class="primary-button">Ajouter le champ</button>
+                        <button id="clearForm" type="button" class="ghost-button">Tout effacer</button>
+                    </div>
+                </form>
+            </section>
+
+            <section class="preview-panel">
+                <div id="emptyState" class="empty-state">
+                    <p>Aucun champ pour le moment. Ajoutez un champ pour commencer.</p>
+                </div>
+
+                <form id="dynamicForm" class="dynamic-form"></form>
+                <button id="previewSubmit" type="button" class="submit-button" hidden>Envoyer le formulaire</button>
+            </section>
+        </div>
+    </div>
+</body>
+</html>

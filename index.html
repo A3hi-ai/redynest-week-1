@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Form Maker</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="./assets/js/justAppend.js" defer></script>
+</head>
+<body>
+    <main class="app-shell">
+        <header class="app-header">
+            <div>
+                <p class="eyebrow">Form builder</p>
+                <h1>Dynamic Form Maker</h1>
+            </div>
+            <button class="ghost-button" id="clearForm" type="button">Clear</button>
+        </header>
+
+        <section class="workspace" aria-label="Dynamic form builder">
+            <aside class="builder-panel" aria-label="Field settings">
+                <div class="panel-heading">
+                    <h2>Add field</h2>
+                    <p>Choose a field type, fill its settings, and add it to the form.</p>
+                </div>
+
+                <form id="fieldBuilder" autocomplete="off">
+                    <label for="fieldType">Field type</label>
+                    <select id="fieldType" name="fieldType">
+                        <option value="text">Text field</option>
+                        <option value="textarea">Text area</option>
+                        <option value="select">Drop down</option>
+                        <option value="radio">Radio button</option>
+                        <option value="checkbox">Checkbox</option>
+                    </select>
+
+                    <label for="fieldLabel">Label</label>
+                    <input id="fieldLabel" name="fieldLabel" type="text" placeholder="Full name" required>
+
+                    <label for="fieldName">Unique name</label>
+                    <input id="fieldName" name="fieldName" type="text" placeholder="full_name" required>
+
+                    <div id="placeholderGroup">
+                        <label for="fieldPlaceholder">Placeholder</label>
+                        <input id="fieldPlaceholder" name="fieldPlaceholder" type="text" placeholder="Enter your answer">
+                    </div>
+
+                    <label class="check-row" for="fieldRequired">
+                        <input id="fieldRequired" name="fieldRequired" type="checkbox">
+                        <span>Required</span>
+                    </label>
+
+                    <div class="options-block" id="optionsBlock" hidden>
+                        <div class="option-title">
+                            <h3>Options</h3>
+                            <button id="addOption" class="small-button" type="button">Add</button>
+                        </div>
+                        <div id="optionsList"></div>
+                    </div>
+
+                    <button class="primary-button" type="submit">Add to form</button>
+                </form>
+            </aside>
+
+            <section class="preview-panel" aria-label="Form preview">
+                <div class="panel-heading preview-heading">
+                    <div>
+                        <h2>Preview</h2>
+                        <p id="fieldCount">No fields yet</p>
+                    </div>
+                    <button class="primary-button submit-button" id="previewSubmit" type="button" hidden>Submit</button>
+                </div>
+
+                <form id="dynamicForm" class="dynamic-form"></form>
+                <div class="empty-state" id="emptyState">
+                    <h2>Start with a field</h2>
+                    <p>Your generated form will appear here.</p>
+                </div>
+            </section>
+        </section>
+    </main>
+</body>
+</html>
